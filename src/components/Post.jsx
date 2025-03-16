@@ -5,8 +5,8 @@ import style from './Post.module.css';
 
 export function Post (props) {
 
-    console.log(props);
-
+    <h1>aaaaaa</h1>
+   
     return (
         <article className= {style.post}>
             <header>
