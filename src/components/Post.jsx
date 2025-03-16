@@ -5,7 +5,7 @@ import style from './Post.module.css';
 
 export function Post (props) {
 
-    console.log(props);
+    // oloa
 
     return (
         <article className= {style.post}>
@@ -38,8 +38,6 @@ export function Post (props) {
 
 
             <div className={style.commentList}>
-              <Comment/>
-              <Comment/>
               <Comment/>
             </div>
         </article>
