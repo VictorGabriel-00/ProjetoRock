@@ -1,24 +1,27 @@
+import { format, formatDistanceToNow } from 'date-fns';
+import { ptBR } from 'date-fns/locale';
+
 import { Avatar } from './Avatar';
 import { Comment } from './Comment';
 import style from './Post.module.css';
 
 
-export function Post (props) {
+export function Post ({author, publisheAdt}) {
+     const publishDate = format (publisheAdt, "d 'de' LLLL 'às' HH:mm'h'", {locale: ptBR} )
+     const publishnow = formatDistanceToNow (publisheAdt, {locale: ptBR, addSuffix: true,}) 
 
-    <h1>aaaaaa</h1>
-   
     return (
         <article className= {style.post}>
             <header>
                 <div className= {style.author}>
-                   <Avatar src="https://media-for2-2.cdn.whatsapp.net/v/t61.24694-24/468606498_4070819139866968_4946346085729600054_n.jpg?ccb=11-4&oh=01_Q5AaIHcbQ6xjbfGwfqiUs9H9vPoY1ErZJjwNG8ewoHlS-JFl&oe=67D5F9F7&_nc_sid=5e03e0&_nc_cat=104"
+                   <Avatar src={author.avatarUrl}
                    />
                     <div className= {style.authorInfo}>
-                        <strong>Victor Gabriel</strong>
-                        <span>Dev Back-And</span>
+                        <strong>{author.name}</strong>
+                        <span>{author.role}</span>
                     </div>
                 </div>
-                <time title="06 de Março às 10:00h" datetime="2025-03-06"> Publicado a 1h</time>
+                 <time title={publishDate} datetime="2025-03-06"> {publishnow} </time> 
             </header>
 
             <div className={style.content}>
@@ -28,7 +31,7 @@ export function Post (props) {
             <form className={style.CommentForm}>
                 <strong>Deixe o seu FeedBack</strong>
 
-                <textarea 
+                <textarea
                     placeholder="deixe um commentario"
                 />
                 <footer>
